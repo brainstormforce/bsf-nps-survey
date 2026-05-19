@@ -27,7 +27,7 @@ export const handleCloseNpsSurvey = async function (
 			},
 		} );
 
-		if ( response.success ) {
+		if ( response?.status ) {
 			console.info( 'NPS Survey dismissed!' );
 			dispatch( {
 				npsId,
@@ -52,7 +52,7 @@ export const handleNpsSurveyApi = async function (
 	try {
 		setProcessing( true );
 		const response = await apiFetch( {
-			path: 'nps-survey/v1/rating',
+			path: '/nps-survey/v1/rating',
 			method: 'POST',
 			headers: {
 				'X-WP-Nonce': nps_survey_data.rest_api_nonce,
@@ -66,7 +66,7 @@ export const handleNpsSurveyApi = async function (
 			},
 		} );
 
-		if ( response.success ) {
+		if ( response?.status ) {
 			if ( '' === step ) {
 				dispatch( {
 					npsId,
@@ -80,9 +80,10 @@ export const handleNpsSurveyApi = async function (
 				payload: step,
 			} );
 		}
-		setProcessing( false );
 	} catch ( error ) {
 		console.error( error );
+	} finally {
+		setProcessing( false );
 	}
 };
 
