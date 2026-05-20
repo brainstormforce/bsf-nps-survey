@@ -1,3 +1,6 @@
+Version 1.0.24 - 20-05-2026
+- Fix: Use library-correct package name in file headers.
+
 Version 1.0.23 - 19-05-2026
 - Fix: WordPress.org compliance — use WP_Error and rest_ensure_response in REST callbacks, sanitize_key for slug params, and align JS response handling with REST format.
 
